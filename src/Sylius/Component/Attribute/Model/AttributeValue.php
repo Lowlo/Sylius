@@ -35,7 +35,7 @@ class AttributeValue implements AttributeValueInterface
     /**
      * @var string
      */
-    private $text;
+    protected $text;
 
     /**
      * @var bool
@@ -61,6 +61,11 @@ class AttributeValue implements AttributeValueInterface
      * @var \DateTime
      */
     private $date;
+
+    /**
+     * @var array
+     */
+    private $json;
 
     /**
      * {@inheritdoc}
@@ -252,6 +257,22 @@ class AttributeValue implements AttributeValueInterface
     protected function setDate(\DateTime $date)
     {
         $this->date = $date;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getJson()
+    {
+        return $this->json;
+    }
+
+    /**
+     * @param array $json
+     */
+    protected function setJson($json)
+    {
+        $this->json = $json;
     }
 
     /**

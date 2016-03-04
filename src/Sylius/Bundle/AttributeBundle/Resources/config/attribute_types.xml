@@ -40,6 +40,9 @@
         <parameter key="sylius.attribute_type.date.class">Sylius\Component\Attribute\AttributeType\DateAttributeType</parameter>
         <parameter key="sylius.form.type.attribute_type.date.class">Sylius\Bundle\AttributeBundle\Form\Type\AttributeType\DateAttributeType</parameter>
         <parameter key="sylius.form.type.attribute_type.configuration.date.class">Sylius\Bundle\AttributeBundle\Form\Type\AttributeType\Configuration\DateAttributeConfigurationType</parameter>
+        <parameter key="sylius.attribute_type.select.class">Sylius\Component\Attribute\AttributeType\SelectAttributeType</parameter>
+        <parameter key="sylius.form.type.attribute_type.select.class">Sylius\Bundle\AttributeBundle\Form\Type\AttributeType\SelectAttributeType</parameter>
+        <parameter key="sylius.form.type.attribute_type.configuration.select.class">Sylius\Bundle\AttributeBundle\Form\Type\AttributeType\Configuration\SelectAttributeConfigurationType</parameter>
     </parameters>
 
     <services>
@@ -99,6 +102,15 @@
         </service>
         <service id="sylius.form.type.attribute_type.configuration.date" class="%sylius.form.type.attribute_type.configuration.date.class%">
             <tag name="form.type" alias="sylius_attribute_type_configuration_date" />
+        </service>
+        <service id="sylius.attribute_type.select" class="%sylius.attribute_type.select.class%">
+            <tag name="sylius.attribute.type" attribute-type="select" label="Select" />
+        </service>
+        <service id="sylius.form.type.attribute_type.select" class="%sylius.form.type.attribute_type.select.class%">
+            <tag name="form.type" alias="sylius_attribute_type_select" />
+        </service>
+        <service id="sylius.form.type.attribute_type.configuration.select" class="%sylius.form.type.attribute_type.configuration.select.class%">
+            <tag name="form.type" alias="sylius_attribute_type_configuration_select" />
         </service>
     </services>
 

@@ -24,6 +24,7 @@ interface AttributeValueInterface extends ResourceInterface
     const STORAGE_DATETIME = 'datetime';
     const STORAGE_INTEGER = 'integer';
     const STORAGE_FLOAT = 'float';
+    const STORAGE_JSON = 'json';
 
     /**
      * @return AttributeSubjectInterface
