@@ -78,7 +78,7 @@ class AttributeController extends ResourceController
         foreach ($attributes as $attribute) {
             $attributeForm = 'sylius_attribute_type_'.$attribute->getType();
 
-            $options = ['label' => $attribute->getName()];
+            $options = ['label' => $attribute->getName(), 'configuration' => $attribute->getConfiguration()];
 
             $form = $this->get('form.factory')->createNamed('value', $attributeForm, null, $options);
             $forms[$attribute->getId()] = $form->createView();

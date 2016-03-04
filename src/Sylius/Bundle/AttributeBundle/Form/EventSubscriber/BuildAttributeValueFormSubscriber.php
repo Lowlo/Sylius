@@ -84,7 +84,7 @@ class BuildAttributeValueFormSubscriber implements EventSubscriberInterface
      */
     private function addValueField(FormInterface $form, AttributeInterface $attribute)
     {
-        $options = ['auto_initialize' => false, 'label' => $attribute->getName()];
+        $options = ['auto_initialize' => false, 'label' => $attribute->getName(), 'configuration' => $attribute->getConfiguration()];
 
         $form->add('value', 'sylius_attribute_type_'.$attribute->getType(), $options);
     }

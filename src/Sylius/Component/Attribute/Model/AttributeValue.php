@@ -68,6 +68,11 @@ class AttributeValue implements AttributeValueInterface
     protected $date;
 
     /**
+     * @var array
+     */
+    protected $json;
+
+    /**
      * {@inheritdoc}
      */
     public function getId()
@@ -257,6 +262,23 @@ class AttributeValue implements AttributeValueInterface
     {
         $this->date = $date;
     }
+
+    /**
+     * @return array
+     */
+    public function getJson()
+    {
+        return $this->json;
+    }
+
+    /**
+     * @param array $json
+     */
+    public function setJson($json)
+    {
+        $this->json = $json;
+    }
+
     /**
      * @throws \BadMethodCallException
      */
