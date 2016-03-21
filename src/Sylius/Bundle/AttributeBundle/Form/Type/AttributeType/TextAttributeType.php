@@ -40,7 +40,7 @@ class TextAttributeType extends AbstractType
             ])
             ->setRequired('configuration')
             ->setNormalizer('constraints', function(Options $options){
-                if (!isset($configuration['min']) || !isset($configuration['max'])) {
+                if (!isset($options['configuration']['min']) || !isset($options['configuration']['max'])) {
                     return [];
                 }
 

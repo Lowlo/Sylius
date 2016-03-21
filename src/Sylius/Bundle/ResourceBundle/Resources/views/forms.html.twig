@@ -52,6 +52,7 @@
                     </p>
                 {% endif %}
                 {% if not form.children|length %}
+                    {{ form_errors(form) }}
                     {{ form_widget(form) }}
                 {% else %}
                     {{ form_rest(form) }}

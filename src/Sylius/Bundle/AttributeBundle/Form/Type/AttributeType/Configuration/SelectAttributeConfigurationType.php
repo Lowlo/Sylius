@@ -72,6 +72,7 @@ class SelectAttributeConfigurationType extends AbstractType
                     'label' => 'sylius.form.attribute_type_configuration.select.values',
                     'allow_add' => true,
                     'allow_delete' => true,
+                    'cascade_validation' => true,
                 ])
             ;
         });
