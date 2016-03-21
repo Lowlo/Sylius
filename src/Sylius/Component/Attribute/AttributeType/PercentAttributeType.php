@@ -36,11 +36,4 @@ class PercentAttributeType implements AttributeTypeInterface
     {
         return static::TYPE;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validate(AttributeValueInterface $attributeValue, ExecutionContextInterface $context, array $configuration)
-    {
-    }
 }

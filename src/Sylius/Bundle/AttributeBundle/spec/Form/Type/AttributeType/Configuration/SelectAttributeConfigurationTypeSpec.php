@@ -39,6 +39,7 @@ class SelectAttributeConfigurationTypeSpec extends ObjectBehavior
                 'allow_add' => true,
                 'allow_delete' => true,
             ])
+            ->shouldBeCalled()
             ->willReturn($builder)
         ;
 
@@ -46,6 +47,7 @@ class SelectAttributeConfigurationTypeSpec extends ObjectBehavior
             ->add('multiple', 'checkbox', [
                 'label' => 'sylius.attribute_type_configuration.select.multiple',
             ])
+            ->shouldBeCalled()
             ->willReturn($builder)
         ;
 

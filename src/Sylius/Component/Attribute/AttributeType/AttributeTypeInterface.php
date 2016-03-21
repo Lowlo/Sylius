@@ -28,11 +28,4 @@ interface AttributeTypeInterface
      * @return string
      */
     public function getType();
-
-    /**
-     * @param AttributeValueInterface $attributeValue
-     * @param ExecutionContextInterface $context
-     * @param array $configuration
-     */
-    public function validate(AttributeValueInterface $attributeValue, ExecutionContextInterface $context, array $configuration);
 }

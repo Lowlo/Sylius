@@ -12,7 +12,9 @@
 namespace Sylius\Bundle\AttributeBundle\Form\Type\AttributeType;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
@@ -37,6 +39,18 @@ class TextAttributeType extends AbstractType
                 'label' => false,
             ])
             ->setRequired('configuration')
+            ->setNormalizer('constraints', function(Options $options){
+                if (!isset($configuration['min']) || !isset($configuration['max'])) {
+                    return [];
+                }
+
+                return [
+                    new Length([
+                        'min' => $options['configuration']['min'],
+                        'max' => $options['configuration']['max'],
+                    ])
+                ];
+            })
         ;
     }
 

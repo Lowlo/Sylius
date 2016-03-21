@@ -110,6 +110,7 @@
             <tag name="form.type" alias="sylius_attribute_type_select" />
         </service>
         <service id="sylius.form.type.attribute_type.configuration.select" class="%sylius.form.type.attribute_type.configuration.select.class%">
+            <argument>%sylius.attribute.attribute_types%</argument>
             <tag name="form.type" alias="sylius_attribute_type_configuration_select" />
         </service>
     </services>

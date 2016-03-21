@@ -38,44 +38,4 @@ class TextAttributeType implements AttributeTypeInterface
     {
         return static::TYPE;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validate(AttributeValueInterface $attributeValue, ExecutionContextInterface $context, array $configuration)
-    {
-        if (!isset($configuration['min']) || !isset($configuration['max'])) {
-            return;
-        }
-
-        $value = $attributeValue->getValue();
-
-        foreach ($this->getValidationErrors($context, $value, $configuration) as $error) {
-            $context
-                ->buildViolation($error->getMessage())
-                ->atPath('value')
-                ->addViolation()
-            ;
-        }
-    }
-
-    /**
-     * @param ExecutionContextInterface $context
-     * @param string $value
-     * @param array $validationConfiguration
-     *
-     * @return ConstraintViolationListInterface
-     */
-    private function getValidationErrors(ExecutionContextInterface $context, $value, array $validationConfiguration)
-    {
-        $validator = $context->getValidator();
-
-        return $validator->validate(
-            $value,
-            new Length([
-                'min' => $validationConfiguration['min'],
-                'max' => $validationConfiguration['max'],
-            ])
-        );
-    }
 }

@@ -47,34 +47,4 @@ class TextAttributeTypeSpec extends ObjectBehavior
     {
         $this->getType()->shouldReturn('text');
     }
-
-    function it_checks_if_attribute_value_is_valid(
-        AttributeInterface $attribute,
-        AttributeValueInterface $attributeValue,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder,
-        ConstraintViolationInterface $constraintViolation,
-        ConstraintViolationListInterface $constraintViolationList,
-        ExecutionContextInterface $context,
-        ValidatorInterface $validator
-    ) {
-        $attributeValue->getAttribute()->willReturn($attribute);
-
-        $attributeValue->getValue()->willReturn('X');
-
-        $context->getValidator()->willReturn($validator);
-        $validator->validate('X', Argument::type(Length::class))->willReturn($constraintViolationList);
-
-        $constraintViolationList->rewind()->shouldBeCalled();
-        $constraintViolationList->valid()->willReturn(true, false);
-        $constraintViolationList->current()->willReturn($constraintViolation);
-        $constraintViolationList->next()->shouldBeCalled();
-
-        $constraintViolation->getMessage()->willReturn('error message');
-
-        $context->buildViolation('error message')->willReturn($constraintViolationBuilder);
-        $constraintViolationBuilder->atPath('value')->willReturn($constraintViolationBuilder);
-        $constraintViolationBuilder->addViolation()->shouldBeCalled();
-
-        $this->validate($attributeValue, $context, ['min' => 2, 'max' => 255]);
-    }
 }
