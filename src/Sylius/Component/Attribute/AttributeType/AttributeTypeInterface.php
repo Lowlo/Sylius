@@ -11,6 +11,7 @@
 
 namespace Sylius\Component\Attribute\AttributeType;
 
+use Sylius\Component\Attribute\Model\AttributeInterface;
 use Sylius\Component\Attribute\Model\AttributeValueInterface;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -19,6 +20,16 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  */
 interface AttributeTypeInterface
 {
+    /**
+     * @return AttributeInterface
+     */
+    public function getAttribute();
+
+    /**
+     * @param AttributeInterface $attribute
+     */
+    public function setAttribute(AttributeInterface $attribute);
+
     /**
      * @return string
      */

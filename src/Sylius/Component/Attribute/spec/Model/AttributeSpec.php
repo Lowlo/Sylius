@@ -12,6 +12,7 @@
 namespace spec\Sylius\Component\Attribute\Model;
 
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Attribute\AttributeType\AttributeTypeInterface;
 use Sylius\Component\Attribute\AttributeType\CheckboxAttributeType;
 use Sylius\Component\Attribute\AttributeType\TextAttributeType;
 use Sylius\Component\Attribute\Model\AttributeInterface;
@@ -88,10 +89,10 @@ class AttributeSpec extends ObjectBehavior
         $this->getConfiguration()->shouldReturn(['format' => 'd/m/Y']);
     }
 
-    function its_storage_type_is_mutable()
+    function its_attribute_type_is_mutable(AttributeTypeInterface $attributeType)
     {
-        $this->setStorageType('text');
-        $this->getStorageType()->shouldReturn('text');
+        $this->setAttributeType($attributeType);
+        $this->getAttributeType()->shouldReturn($attributeType);
     }
 
     function it_initializes_creation_date_by_default()

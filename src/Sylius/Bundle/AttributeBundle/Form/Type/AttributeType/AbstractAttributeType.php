@@ -15,23 +15,20 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
+ * @author Laurent Paganin-Gioanni <l.paganin@algo-factory.com>
  */
-class TextAttributeType extends AbstractAttributeType
+abstract class AbstractAttributeType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'text';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'sylius_attribute_type_text';
+        $resolver
+            ->setDefaults([
+                'label' => false,
+            ])
+            ->setRequired('configuration')
+        ;
     }
 }

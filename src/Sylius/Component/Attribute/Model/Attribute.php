@@ -13,6 +13,7 @@ namespace Sylius\Component\Attribute\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Attribute\AttributeType\AttributeTypeInterface;
 use Sylius\Component\Attribute\AttributeType\TextAttributeType;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -55,9 +56,9 @@ class Attribute implements AttributeInterface
     protected $values;
 
     /**
-     * @var string
+     * @var AttributeTypeInterface
      */
-    protected $storageType;
+    protected $attributeType;
 
     public function __construct()
     {
@@ -156,18 +157,19 @@ class Attribute implements AttributeInterface
     }
 
     /**
-     * @param string $storageType
+     * {@inheritdoc}
      */
-    public function setStorageType($storageType)
+    public function getAttributeType()
     {
-        $this->storageType = $storageType;
+        return $this->attributeType;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getStorageType()
+    public function setAttributeType(AttributeTypeInterface $attributeType)
     {
-        return $this->storageType;
+        $this->attributeType = clone $attributeType;
+        $this->attributeType->setAttribute($this);
     }
 }

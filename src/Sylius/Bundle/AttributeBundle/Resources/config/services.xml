@@ -20,6 +20,7 @@
         <parameter key="sylius.model.attribute.interface">Sylius\Component\Attribute\AttributeType\AttributeTypeInterface</parameter>
 
         <parameter key="sylius.event_subscriber.attribute.load_metadata.class">Sylius\Bundle\AttributeBundle\EventListener\LoadMetadataSubscriber</parameter>
+        <parameter key="sylius.event_subscriber.attribute.load_attribute_type.class">Sylius\Bundle\AttributeBundle\EventListener\LoadAttributeTypeSubscriber</parameter>
 
         <parameter key="sylius.form.type.attribute_type_choice.class">Sylius\Bundle\AttributeBundle\Form\Type\AttributeTypeChoiceType</parameter>
         <parameter key="sylius.registry.attribute_type.class">Sylius\Component\Registry\ServiceRegistry</parameter>
@@ -31,6 +32,10 @@
         <service id="sylius.event_subscriber.attribute.load_metadata" class="%sylius.event_subscriber.attribute.load_metadata.class%">
             <tag name="doctrine.event_subscriber" />
             <argument>%sylius.attribute.subjects%</argument>
+        </service>
+        <service id="sylius.event_subscriber.attribute.load_attribute_type" class="%sylius.event_subscriber.attribute.load_attribute_type.class%">
+            <tag name="doctrine.event_subscriber" />
+            <argument type="service" id="sylius.registry.attribute_type" />
         </service>
 
         <service id="sylius.registry.attribute_type" class="%sylius.registry.attribute_type.class%">

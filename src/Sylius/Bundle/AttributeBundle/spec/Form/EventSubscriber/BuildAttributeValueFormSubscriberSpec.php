@@ -14,6 +14,7 @@ namespace spec\Sylius\Bundle\AttributeBundle\Form\EventSubscriber;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Sylius\Bundle\AttributeBundle\Form\EventSubscriber\BuildAttributeValueFormSubscriber;
+use Sylius\Component\Attribute\AttributeType\AttributeTypeInterface;
 use Sylius\Component\Attribute\AttributeType\CheckboxAttributeType;
 use Sylius\Component\Attribute\AttributeType\DateAttributeType;
 use Sylius\Component\Attribute\Model\AttributeInterface;
@@ -88,6 +89,7 @@ class BuildAttributeValueFormSubscriberSpec extends ObjectBehavior
     function it_adds_a_value_form_field_with_correct_type_based_on_the_attribute_id(
         $attributeRepository,
         AttributeInterface $attribute,
+        AttributeTypeInterface $attributeType,
         Form $form,
         FormEvent $event
     ) {
@@ -104,8 +106,9 @@ class BuildAttributeValueFormSubscriberSpec extends ObjectBehavior
         $attributeRepository->find(6)->willReturn($attribute);
         $attribute->getName()->willReturn('Release Date');
         $attribute->getType()->willReturn(DateAttributeType::TYPE);
-        $attribute->getStorageType()->willReturn(AttributeValueInterface::STORAGE_DATE);
         $attribute->getConfiguration()->willReturn(Argument::type('array'));
+        $attribute->getAttributeType()->willReturn($attributeType);
+        $attributeType->getStorageType()->willReturn(AttributeValueInterface::STORAGE_DATE);
 
         $form->add('value', 'sylius_attribute_type_date', Argument::type('array'))->shouldBeCalled();
 

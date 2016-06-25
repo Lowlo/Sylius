@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class IntegerAttributeType implements AttributeTypeInterface
+class IntegerAttributeType extends AbstractAttributeType
 {
     const TYPE = 'integer';
 

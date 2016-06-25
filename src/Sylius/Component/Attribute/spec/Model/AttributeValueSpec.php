@@ -12,6 +12,7 @@
 namespace spec\Sylius\Component\Attribute\Model;
 
 use PhpSpec\ObjectBehavior;
+use Sylius\Component\Attribute\AttributeType\AttributeTypeInterface;
 use Sylius\Component\Attribute\Model\AttributeInterface;
 use Sylius\Component\Attribute\Model\AttributeSubjectInterface;
 use Sylius\Component\Attribute\Model\AttributeValueInterface;
@@ -73,9 +74,10 @@ class AttributeValueSpec extends ObjectBehavior
         $this->getValue()->shouldReturn(null);
     }
 
-    function its_value_is_mutable_based_on_attribute_storage_type(AttributeInterface $attribute)
+    function its_value_is_mutable_based_on_attribute_storage_type(AttributeInterface $attribute, AttributeTypeInterface $attributeType)
     {
-        $attribute->getStorageType()->willReturn('text');
+        $attribute->getAttributeType()->willReturn($attributeType);
+        $attributeType->getStorageType()->willReturn('text');
         $this->setAttribute($attribute);
 
         $this->setValue('XXL');

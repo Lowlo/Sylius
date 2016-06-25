@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class PercentAttributeType extends AbstractType
+class PercentAttributeType extends AbstractAttributeType
 {
     /**
      * {@inheritdoc}
@@ -25,19 +25,6 @@ class PercentAttributeType extends AbstractType
     public function getParent()
     {
         return 'percent';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver
-            ->setDefaults([
-                'label' => false,
-            ])
-            ->setRequired('configuration')
-        ;
     }
 
     /**

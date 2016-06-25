@@ -42,11 +42,12 @@ class AttributeFactorySpec extends ObjectBehavior
     {
         $factory->createNew()->willReturn($attribute);
 
-        $attributeType->getStorageType()->willReturn('text');
         $attributeTypesRegistry->get('text')->willReturn($attributeType);
 
+        $attribute->setAttributeType($attributeType)->shouldBeCalled();
+
         $attribute->getType()->willReturn('text');
-        $attribute->setStorageType('text')->shouldBeCalled();
+        $attribute->getAttributeType()->willReturn($attributeType);
 
         $this->createNew()->shouldReturn($attribute);
     }
@@ -55,12 +56,11 @@ class AttributeFactorySpec extends ObjectBehavior
     {
         $factory->createNew()->willReturn($typedAttribute);
 
-        $attributeType->getStorageType()->willReturn('datetime');
         $attributeTypesRegistry->get('datetime')->willReturn($attributeType);
 
         $typedAttribute->setType('datetime')->shouldBeCalled();
         $typedAttribute->getType()->willReturn('datetime');
-        $typedAttribute->setStorageType('datetime')->shouldBeCalled();
+        $typedAttribute->setAttributeType($attributeType)->shouldBeCalled();
 
         $this->createTyped('datetime')->shouldReturn($typedAttribute);
     }

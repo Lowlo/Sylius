@@ -46,7 +46,7 @@ class AttributeFactory implements AttributeFactoryInterface
     {
         $attribute = $this->factory->createNew();
         $attribute->setType($type);
-        $attribute->setStorageType($this->attributeTypesRegistry->get($type)->getStorageType());
+        $attribute->setAttributeType($this->attributeTypesRegistry->get($type));
 
         return $attribute;
     }
@@ -57,7 +57,7 @@ class AttributeFactory implements AttributeFactoryInterface
     public function createNew()
     {
         $attribute = $this->factory->createNew();
-        $attribute->setStorageType($this->attributeTypesRegistry->get($attribute->getType())->getStorageType());
+        $attribute->setAttributeType($this->attributeTypesRegistry->get($attribute->getType()));
 
         return $attribute;
     }

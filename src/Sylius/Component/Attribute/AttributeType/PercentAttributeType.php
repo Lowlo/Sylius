@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class PercentAttributeType implements AttributeTypeInterface
+class PercentAttributeType extends AbstractAttributeType
 {
     const TYPE = 'percent';
 

@@ -295,7 +295,7 @@ final class ProductFixture extends AbstractResourceFixture
      */
     private function getRandomValueForProductAttribute(AttributeInterface $productAttribute)
     {
-        switch ($productAttribute->getStorageType()) {
+        switch ($productAttribute->getAttributeType()->getStorageType()) {
             case AttributeValueInterface::STORAGE_BOOLEAN:
                 return $this->faker->boolean;
             case AttributeValueInterface::STORAGE_INTEGER:
@@ -304,6 +304,8 @@ final class ProductFixture extends AbstractResourceFixture
                 return $this->faker->randomFloat(4, 0, 10000);
             case AttributeValueInterface::STORAGE_TEXT:
                 return $this->faker->sentence;
+            case AttributeValueInterface::STORAGE_JSON:
+                return null;
             case AttributeValueInterface::STORAGE_DATE:
             case AttributeValueInterface::STORAGE_DATETIME:
                 return $this->faker->dateTimeThisCentury;

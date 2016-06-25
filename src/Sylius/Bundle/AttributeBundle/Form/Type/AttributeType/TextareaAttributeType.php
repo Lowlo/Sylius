@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class TextareaAttributeType extends AbstractType
+class TextareaAttributeType extends AbstractAttributeType
 {
     /**
      * {@inheritdoc}
@@ -25,19 +25,6 @@ class TextareaAttributeType extends AbstractType
     public function getParent()
     {
         return 'textarea';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver
-            ->setDefaults([
-                'label' => false,
-            ])
-            ->setRequired('configuration')
-        ;
     }
 
     /**

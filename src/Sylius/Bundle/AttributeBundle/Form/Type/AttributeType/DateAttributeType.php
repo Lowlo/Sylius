@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class DateAttributeType extends AbstractType
+class DateAttributeType extends AbstractAttributeType
 {
     /**
      * {@inheritdoc}
@@ -25,19 +25,6 @@ class DateAttributeType extends AbstractType
     public function getParent()
     {
         return 'date';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver
-            ->setDefaults([
-                'label' => false,
-            ])
-            ->setRequired('configuration')
-        ;
     }
 
     /**

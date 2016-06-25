@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author Mateusz Zalewski <mateusz.zalewski@lakion.com>
  */
-class IntegerAttributeType extends AbstractType
+class IntegerAttributeType extends AbstractAttributeType
 {
     /**
      * {@inheritdoc}
@@ -25,19 +25,6 @@ class IntegerAttributeType extends AbstractType
     public function getParent()
     {
         return 'integer';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver
-            ->setDefaults([
-                'label' => false,
-            ])
-            ->setRequired('configuration')
-        ;
     }
 
     /**

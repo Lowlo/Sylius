@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 /**
  * @author Laurent Paganin-Gioanni <l.paganin@algo-factory.com>
  */
-class SelectAttributeType implements AttributeTypeInterface
+class SelectAttributeType extends AbstractAttributeType
 {
     const TYPE = 'select';
 
@@ -29,6 +29,14 @@ class SelectAttributeType implements AttributeTypeInterface
      */
     public function getStorageType()
     {
+        if (!is_null($this->getAttribute())) {
+            $configuration = $this->getAttribute()->getConfiguration();
+
+            if (isset($configuration['multiple']) && !$configuration['multiple']) {
+                return AttributeValueInterface::STORAGE_INTEGER;
+            }
+        }
+
         return AttributeValueInterface::STORAGE_JSON;
     }
 

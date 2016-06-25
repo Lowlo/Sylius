@@ -11,22 +11,27 @@
 
 namespace Sylius\Bundle\AttributeBundle\Form\Type\AttributeType;
 
+use Sylius\Bundle\AttributeBundle\Form\DataTransformer\ChoicesToValuesTransformer;
+use Sylius\Bundle\AttributeBundle\Form\DataTransformer\ChoiceToValueTransformer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\EventListener\MergeCollectionListener;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Laurent Paganin-Gioanni <l.paganin@algo-factory.com>
  */
-class SelectAttributeType extends AbstractType
+class SelectAttributeType extends AbstractAttributeType
 {
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
+
         $resolver
-            ->setRequired('configuration')
             ->setNormalizer('choices', function(Options $options, $value){
                 return $options['configuration']['options'];
             })

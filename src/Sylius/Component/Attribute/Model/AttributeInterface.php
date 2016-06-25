@@ -11,6 +11,7 @@
 
 namespace Sylius\Component\Attribute\Model;
 
+use Sylius\Component\Attribute\AttributeType\AttributeTypeInterface;
 use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
@@ -52,12 +53,12 @@ interface AttributeInterface extends
     public function getValues();
 
     /**
-     * @return string
+     * @return AttributeTypeInterface
      */
-    public function getStorageType();
+    public function getAttributeType();
 
     /**
-     * @param string $storageType
+     * @param AttributeTypeInterface $attributeType
      */
-    public function setStorageType($storageType);
+    public function setAttributeType(AttributeTypeInterface $attributeType);
 }

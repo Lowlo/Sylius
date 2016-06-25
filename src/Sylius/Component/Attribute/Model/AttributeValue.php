@@ -65,7 +65,7 @@ class AttributeValue implements AttributeValueInterface
     /**
      * @var array
      */
-    private $json = [];
+    private $json;
 
     /**
      * {@inheritdoc}
@@ -116,7 +116,7 @@ class AttributeValue implements AttributeValueInterface
             return null;
         }
 
-        $getter = 'get' . $this->attribute->getStorageType();
+        $getter = 'get' . $this->attribute->getAttributeType()->getStorageType();
 
         return $this->$getter();
     }
@@ -128,7 +128,7 @@ class AttributeValue implements AttributeValueInterface
     {
         $this->assertAttributeIsSet();
 
-        $setter = 'set' . $this->attribute->getStorageType();
+        $setter = 'set' . $this->attribute->getAttributeType()->getStorageType();
 
         $this->$setter($value);
     }
